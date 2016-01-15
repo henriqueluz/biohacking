@@ -5,19 +5,16 @@ section.method {
     flex-direction: column;
 }
 
-h1.method-title {
-    color: #5CA612;
-    text-align: center;
-}
-
 section.method > section {
   width: 100%;
   min-height: 300px;
 }
 
 h1.method-title  {
+  color: #5CA612;
+  text-align: center;
   font-size: 5em;
-  line-height: .5em;
+  line-height: .8em;
 }
 
 .board > div {
@@ -54,6 +51,8 @@ section.method-testimonies > .board > div {
   box-shadow: 2px 2px 55px #5CA612;
 }
 
+
+/* WHAT */
 section.method-what > .board {
   display: flex;
   width: 100%;
@@ -66,9 +65,10 @@ section.method-what > .board > div {
   color: #F2F2F2;
   box-shadow: 2px 2px 25px #40730C;
   margin: 10px;
+  flex-basis: 80%;
 }
 
-
+/* WORK */
 section.method-work {
     background-color: #DF3C7B;
 }
@@ -90,7 +90,7 @@ section.method-work > .board > div {
   color: #5F3646;
   box-shadow: 2px 2px 55px #5F3646;
   margin: 5px;
-  font-size: 1em;
+  font-size: 1.5em;
   flex-basis: 20%;
   min-width: 300px;
 }
