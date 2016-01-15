@@ -18,6 +18,8 @@ Rails.application.routes.draw do
   #   get '*path', to: 'home#angular'
   # end
 
+  get "landing", to: 'home#landing'
+  
   root 'home#index'
 
 end

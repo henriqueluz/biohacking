@@ -9,4 +9,7 @@ class HomeController < ApplicationController
   def angular
   end
   
+  def landing
+  end
+  
 end
