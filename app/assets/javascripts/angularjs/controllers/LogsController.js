@@ -15,7 +15,15 @@ function LogController($scope, LogsServices, $interpolate, $location, $route) {
     8: "URINATE",  
     7: "WAKEUP",    
     1: "WEIGHT",
-    4: "WORKOUT"
+    4: "WORKOUT",
+    13: "READ",
+    14: "WRITE",
+    15: "PRAY",
+    16: "MEDITATE",
+    17: "WORK",
+    18: "TRAVEL",
+    19: "LISTEN",
+    20: "STUDY"
   };
   
   $scope.create = function(kind) {

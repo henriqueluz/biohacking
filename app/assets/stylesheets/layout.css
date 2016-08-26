@@ -225,6 +225,7 @@ input {
 
 }
 
+/*
 .list-group-item.active, .list-group-item.active:focus,
 .list-group-item.active:hover, .list-group-item:hover {
 
@@ -233,6 +234,7 @@ input {
   color: #fff;
 
 }
+*/
 
 @media only screen
   and (max-device-width: 568px) {

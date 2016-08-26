@@ -24,11 +24,11 @@
 
          <div class="menu">
 
-              <%= link_to "Filter", "/filter" %>
+              <%= link_to "Filter", "/filter", class: 'fa fa-search' %>
 
-              <%= link_to "Today", "/" %>
+              <%= link_to "Today", "/", class: 'actived fa fa-calendar-check-o' %>
               
-              <%= link_to "Charts", "/charts" %>
+              <%= link_to "Charts", "/charts", class: 'fa fa-bar-chart' %>
 
          </div>
 
@@ -50,21 +50,21 @@
 
   <script type="text/ng-template" id="logedit.html">    
     <form class="bioform">
-      <div class="section" style="display: flex;">
-          <div name="display" class="display">
+      <div class="section {{ this.getKind( logController.model.kind )  }}" style="display: flex;">
+          <div name="display" class="display {{ this.getKind( logController.model.kind )  }}">
              <div>{{ this.getKind( logController.model.kind )  }}</div>
           </div>
       </div>
-      <div class="section" style="display: flex;">
+      <div class="section {{ this.getKind( logController.model.kind )  }}" style="display: flex;">
           <div class="input-group date">
             <input id="logged_at" name="logged_at" ng-model="logController.model.logged_at" class="form-control field" placeholder="Enter text" required>
             <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
           </div>
       </div>
-      <div class="section" style="display: flex;">
+      <div class="section {{ this.getKind( logController.model.kind )  }}" style="display: flex;">
           <input id="description" name="description" ng-model="logController.model.description" class="form-control field" placeholder="Enter tags to edit">
       </div>
-      <div class="section" style="display: flex;">
+      <div class="section {{ this.getKind( logController.model.kind )  }}" style="display: flex;">
           <input id="Delete" name="Delete" class="form-control btn btn-primary" placeholder="Enter text" mandatory="false" type="button" value="Delete" ng-click="logController.destroy()">
           <input id="Done" name="Done" class="form-control btn btn-primary btn-done" placeholder="Enter text" mandatory="false" type="button" value="Done" ng-click="logController.done()">
       </div>
@@ -78,10 +78,13 @@
     
       <div ng-show="logController.model.id" ng-include="'logedit.html'"></div>
     
-      <div class="row" ng-repeat="log in logs track by log.id" ng-click="logController.model = log">
+      <div class="row {{getKind(log.kind)}}-ROW" ng-repeat="log in logs track by log.id" ng-click="logController.model = log">
 
         <div class="kind-info" data-id="{{log.id}}">
-          <div class="kind"><a> {{getKind(log.kind)}} </a></div>
+          <div class="kind">
+            <a> {{getKind(log.kind)}} </a>
+            <a class="private" ng-if="log.kind === 1 || log.kind === 3"> secret </a>
+          </div>
           <div class="date">{{ log.logged_at | date:'dd/MM/yyyy HH:mm' }}</div>
         </div>
 
@@ -98,7 +101,20 @@
   
   <script type="text/ng-template" id="add.html">
   <div class="list-group">
-    <div class="list-group-item" ng-repeat="(key, value) in KIND" ng-click="create(key)">{{value}}</div>
+    <div class="list-group-item {{value}}" ng-repeat="(key, value) in KIND" ng-click="create(key)" >
+      {{value}}
+      <div class="tags"> 
+        <a>#lowcarb</a> 
+        <a>#ketogenic</a> 
+        <a>#200g</a> 
+        <a>#pork</a> 
+        <a>#salad</a> 
+        <a>#salt</a> 
+        <a>#whole30</a>
+      </div>
+      
+      
+    </div>
   </div>
   </script>
 

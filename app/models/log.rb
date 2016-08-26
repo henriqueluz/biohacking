@@ -13,6 +13,14 @@ class Log < ActiveRecord::Base
   SEX=10
   BATH=11
   PARTY=12
+  READ=13
+  WRITE=14
+  PRAY=15
+  MEDITATE=16
+  WORK=17
+  TRAVEL=18
+  LISTEN=19
+  STUDY=20
   
   def self.search user, params
     query = where(user_id: user.id)
@@ -20,7 +28,7 @@ class Log < ActiveRecord::Base
     query = query.where(kind: params[:kind]) if params[:kind].present?
     query = query.where("deleted_at IS NULL")
     
-    query = query.where("logged_at > now()::date")
+    #query = query.where("logged_at > now()::date")
     
     #logged_at_begin: "2015", logged_at_end: "2015"
     
