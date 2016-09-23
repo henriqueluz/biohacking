@@ -1,13 +1,20 @@
 import React from 'react';
 
-export default (klass) => class extends klass {
+export default class ZXComponent extends React.Component {
 
-  componentWillReceiveProps(nextProps) {
-  
-    // if (nextProps.user.status === 'authenticated' && nextProps.user.user &&
-    //    !nextProps.user.error) {
-    //      this.props.changeLocationOnSignIn(this.props.nextPathname);
-    // }
+  static propTypes = {
+    user: React.PropTypes.object,
+  }
+
+  static contextTypes = {
+    router: React.PropTypes.object.isRequired,
+  }
+
+  componentWillMount() {
+    if(!this.props.user.isLogged) {
+      this.context.router.push('/login');
+    }
+    return false;
   }
 
 }

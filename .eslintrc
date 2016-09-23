@@ -1,0 +1,36 @@
+{
+  /* herda todas as rules pra react e jsx */
+  "extends": ["standard", "standard-react", "airbnb"],
+  /*
+    Interessante informar os ambientes
+    pra não dar erro em variáveis globais como a window
+    do navegador
+  */
+  "env": {
+    "browser": true,
+    "es6": true
+  },
+  "globals": {
+    "localStorageDB": true
+  },
+  /*
+    Importante usar esse parser
+    pra não lançar erro em funcionalidades
+    ainda não implementadas na Spec como decorators
+   */
+  "parser": "babel-eslint",
+  "parserOptions": {
+    "ecmaFeatures": {
+      "experimentalObjectRestSpread": true,
+      "jsx": true
+    }
+  },
+  /* Sobrescrevemos algumas rules do airbnb e do próprio eslint */
+  rules: {
+    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
+    "import/no-unresolved": 0,
+    "import/no-extraneous-dependencies": 0,
+    "new-cap": ["error", { "newIsCapExceptions": ["localStorageDB"] }],
+    arrow-body-style: ["error", "as-needed"]
+  }
+}

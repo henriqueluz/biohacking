@@ -1,9 +1,27 @@
 {
+  "name": "biohacking",
+  "version": "1.0.0",
+  "description": "Um produto para rastrear, analisar e aprender com suas atividades.",
+  "private": true,
+  "engines": {
+    "node": "5.11.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/cmilfont/biohacking.git"
+  },
+  "author": "cmilfont",
+  "license": "Copyright",
+  "bugs": {
+    "url": "https://github.com/cmilfont/biohacking/issues"
+  },
+  "homepage": "http://produtoreativo.com.br/",
   "dependencies": {
     "babel": "^6.5.2",
     "babel-cli": "^6.14.0",
     "babel-core": "^6.14.0",
     "babel-eslint": "^6.0.2",
+    "babel-plugin-resolver": "0.0.6",
     "babel-plugin-transform-decorators": "^6.13.0",
     "babel-plugin-transform-decorators-legacy": "^1.3.4",
     "babel-polyfill": "^6.13.0",

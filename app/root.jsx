@@ -8,23 +8,28 @@ import { syncHistoryWithStore, routerReducer } from 'react-router-redux';
 import firebase from 'firebase';
 
 import createSagaMiddleware from 'redux-saga';
-import sagas from './sagas';
+import sagas from 'sagas';
 
-import count from './reducers/count.js';
-import activities from './reducers/activities.js';
+import count from 'reducers/count.js';
+import user from 'reducers/user.js';
+import activities from 'reducers/activities.js';
+import kinds from 'reducers/kinds.js';
 
-import Base from './components/base.jsx';
-import Activities from './components/activities/list.jsx';
-import NewActivity from './components/activities/newactivity.jsx';
-import Search from './components/search/search.jsx';
+import Base from 'components/base.jsx';
+import Activities from 'components/activities/list.jsx';
+import NewActivity from 'components/activities/newactivity.jsx';
+import Search from 'components/search/search.jsx';
+import Login from 'components/user/login.jsx';
 
 export default class Root extends React.Component {
   render() {
 
     const reducers = combineReducers({
       routing: routerReducer,
+      user,
       count,
-      activities
+      kinds,
+      activities,
     });
 
     const sagaMiddleware = createSagaMiddleware();
@@ -32,7 +37,8 @@ export default class Root extends React.Component {
     const store = createStore(
       reducers,
       compose(
-        applyMiddleware(sagaMiddleware)
+        applyMiddleware(sagaMiddleware),
+        window.devToolsExtension && window.devToolsExtension()
       )
     );
 
@@ -48,7 +54,11 @@ export default class Root extends React.Component {
       messagingSenderId: "71457068040",
     });
 
+    window.firebase = firebase;
+
     const history = syncHistoryWithStore(browserHistory, store);
+
+    if (window.devToolsExtension) window.devToolsExtension.updateStore(store);
 
     return (
       <Provider store={store}>
@@ -58,6 +68,7 @@ export default class Root extends React.Component {
             <Route path="/search" component={Search} />
             <Route path="/activities" component={Activities} />
             <Route path="/new" component={NewActivity} />
+            <Route path="/login" component={Login} />
           </Route>
         </Router>
       </Provider>
