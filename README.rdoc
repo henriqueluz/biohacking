@@ -1,7 +1,0 @@
-== README
-
-A project to track, analyze and learning with your activities.
-
-
-== LICENSE
-GLP3
