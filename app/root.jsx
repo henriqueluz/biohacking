@@ -3,9 +3,10 @@ import React from 'react';
 import { Provider } from 'react-redux';
 import { createStore, combineReducers, applyMiddleware, compose  } from 'redux';
 import { IndexRedirect, Router, Route, browserHistory } from 'react-router';
-import { syncHistoryWithStore, routerReducer } from 'react-router-redux';
+import { syncHistoryWithStore, routerReducer, routerMiddleware} from 'react-router-redux';
 
 import firebase from 'firebase';
+import moment from 'moment';
 
 import createSagaMiddleware from 'redux-saga';
 import sagas from 'sagas';
@@ -34,15 +35,18 @@ export default class Root extends React.Component {
 
     const sagaMiddleware = createSagaMiddleware();
 
+    const middlewares = [
+      routerMiddleware(browserHistory),
+      sagaMiddleware,
+    ];
+
     const store = createStore(
       reducers,
       compose(
-        applyMiddleware(sagaMiddleware),
+        applyMiddleware(...middlewares),
         window.devToolsExtension && window.devToolsExtension()
       )
     );
-
-    window.store = store;
 
     sagaMiddleware.run(sagas);
 
@@ -54,6 +58,8 @@ export default class Root extends React.Component {
       messagingSenderId: "71457068040",
     });
 
+    window.store = store;
+    window.moment = moment;
     window.firebase = firebase;
 
     const history = syncHistoryWithStore(browserHistory, store);
@@ -64,7 +70,7 @@ export default class Root extends React.Component {
       <Provider store={store}>
         <Router history={history}>
           <Route path="/" component={Base}>
-            <IndexRedirect to="/new" />
+            <IndexRedirect to="/activities" />
             <Route path="/search" component={Search} />
             <Route path="/activities" component={Activities} />
             <Route path="/new" component={NewActivity} />

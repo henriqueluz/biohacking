@@ -1,126 +1,126 @@
 [
     {
         "id": "1",
-        "color": "#f1c40f",
+        "color": "#FE5F55",
         "description": "WEIGHT",
         "createdAt": "2016-09-23T11:22:03-03:00",
         "updatedAt": "2016-09-23T11:22:03-03:00"
     },
     {
         "id": "2",
-        "color": "#3498db",
+        "color": "#F0B67F",
         "description": "EAT",
         "createdAt": "2016-09-23T11:22:03-03:00",
         "updatedAt": "2016-09-23T11:22:03-03:00"
     },
     {
         "id": "3",
-        "color": "#3D566E",
+        "color": "#D6D1B1",
         "description": "DRINK",
         "createdAt": "2016-09-23T11:22:03-03:00",
         "updatedAt": "2016-09-23T11:22:03-03:00"
     },
     {
         "id": "4",
-        "color": "#16a085",
+        "color": "#C7EFCF",
         "description": "WORKOUT",
         "createdAt": "2016-09-23T11:22:03-03:00",
         "updatedAt": "2016-09-23T11:22:03-03:00"
     },
     {
         "id": "5",
-        "color": "#e74c3c",
+        "color": "#EEF5DB",
         "description": "HUNGRY",
         "createdAt": "2016-09-23T11:22:03-03:00",
         "updatedAt": "2016-09-23T11:22:03-03:00"
     },
     {
         "id": "6",
-        "color": "#e67e22",
+        "color": "#D496A7",
         "description": "SLEEP",
         "createdAt": "2016-09-23T11:22:03-03:00",
         "updatedAt": "2016-09-23T11:22:03-03:00"
     },
     {
         "id": "7",
-        "color": "#7f8c8d",
+        "color": "#F1DEDE",
         "description": "WAKEUP",
         "createdAt": "2016-09-23T11:22:03-03:00",
         "updatedAt": "2016-09-23T11:22:03-03:00"
     },
     {
         "id": "8",
-        "color": "#d35400",
+        "color": "#5D576B",
         "description": "SEX",
         "createdAt": "2016-09-23T11:22:03-03:00",
         "updatedAt": "2016-09-23T11:22:03-03:00"
     },
     {
         "id": "9",
-        "color": "#2980b9",
+        "color": "#FE938C",
         "description": "BATH",
         "createdAt": "2016-09-23T11:22:03-03:00",
         "updatedAt": "2016-09-23T11:22:03-03:00"
     },
     {
         "id": "10",
-        "color": "#c0392b",
+        "color": "#6CD4FF",
         "description": "PARTY",
         "createdAt": "2016-09-23T11:22:03-03:00",
         "updatedAt": "2016-09-23T11:22:03-03:00"
     },
     {
         "id": "11",
-        "color": "#C795C1",
+        "color": "#261C15",
         "description": "READ",
         "createdAt": "2016-09-23T11:22:03-03:00",
         "updatedAt": "2016-09-23T11:22:03-03:00"
     },
     {
         "id": "12",
-        "color": "#D09259",
+        "color": "#F05D23",
         "description": "WRITE",
         "createdAt": "2016-09-23T11:22:03-03:00",
         "updatedAt": "2016-09-23T11:22:03-03:00"
     },
     {
         "id": "13",
-        "color": "#876A9D",
+        "color": "#D6D1B1",
         "description": "PRAY",
         "createdAt": "2016-09-23T11:22:03-03:00",
         "updatedAt": "2016-09-23T11:22:03-03:00"
     },
     {
         "id": "14",
-        "color": "#64A2BC",
+        "color": "#C5D86D",
         "description": "MEDITATE",
         "createdAt": "2016-09-23T11:22:03-03:00",
         "updatedAt": "2016-09-23T11:22:03-03:00"
     },
     {
         "id": "15",
-        "color": "#54B7B6",
+        "color": "#55828B",
         "description": "WORK",
         "createdAt": "2016-09-23T11:22:03-03:00",
         "updatedAt": "2016-09-23T11:22:03-03:00"
     },
     {
         "id": "16",
-        "color": "#3FAF78",
+        "color": "#87BBA2",
         "description": "TRAVEL",
         "createdAt": "2016-09-23T11:22:03-03:00",
         "updatedAt": "2016-09-23T11:22:03-03:00"
     },
     {
         "id": "17",
-        "color": "#33001b",
+        "color": "#F28F3B",
         "description": "LISTEN",
         "createdAt": "2016-09-23T11:22:03-03:00",
         "updatedAt": "2016-09-23T11:22:03-03:00"
     },
     {
         "id": "18",
-        "color": "#480048",
+        "color": "#364958",
         "description": "STUDY",
         "createdAt": "2016-09-23T11:22:03-03:00",
         "updatedAt": "2016-09-23T11:22:03-03:00"

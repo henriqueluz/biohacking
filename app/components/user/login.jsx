@@ -8,14 +8,6 @@ export default class Login extends React.Component {
     router: React.PropTypes.object.isRequired,
   }
 
-  authUser = ({user}) => {
-    const {dispatch} = this.props;
-    dispatch({
-      type: 'ZX_USER_REQUEST_SUCCESS',
-      payload: user
-    })
-  }
-
   catchError = error => {
     console.log("Error [Dê refresh pra tentar de novo]", error);
   }

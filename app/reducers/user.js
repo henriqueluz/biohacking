@@ -1,4 +1,4 @@
-export default (state = { isLogged: false}, action) => {
+export default (state = {}, action) => {
   if(action.type === 'ZX_USER_LOGGED_SUCCESS') {
     console.log('Reducer', action.payload);
     return action.payload;

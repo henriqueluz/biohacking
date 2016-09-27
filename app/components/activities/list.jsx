@@ -1,40 +1,45 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import {List, ListItem} from 'material-ui/List';
-import Activity from './activity.jsx';
+import ZXComponent from 'components/component.jsx';
+import Container from 'components/activities/activitycontainer.jsx';
 
-@connect((state) => ({
-  activities: state.activities
-}))
-export default class Activities extends React.Component {
+@connect(({user, activities}) => ({ user, activities }))
+export default class Activities extends ZXComponent {
 
   static propTypes = {
-    activities: React.PropTypes.array.isRequired,
+    activities: React.PropTypes.object.isRequired,
   }
 
   componentDidMount() {
-    this.props.dispatch({
-      type: 'BIO_ACTIVITIES_REQUEST'
-    });
+    const {dispatch, user} = this.props;
+    dispatch({ type: 'ZX_ACTIVITIES_REQUEST' });
   }
 
-  edit = (event, item) => {
-    debugger
+  edit = (payload) => {
+    const {dispatch} = this.props;
+    dispatch({type: 'ZX_ACTIVITIES_EDIT', payload});
   }
 
-  mapActivity = item => (
-    <ListItem onClick={this.edit} key={`activity-${item.id}`}>
-      <Activity {...item} />
-    </ListItem>
-  );
+  mapActivity = item => {
+    const {activities} = this.props;
+    const editMode = activities.get('editMode');
+    const id = activities.get('entity').get('id');
+    return (
+      <ListItem key={`activity-${item.id}`}>
+        <Container editHandler={this.edit.bind(this, item)} editMode={editMode} id={id} activity={item} />
+      </ListItem>
+    );
+
+  }
 
   render() {
-
-    const lista = this.props.activities.map(this.mapActivity);
+    const {activities} = this.props;
+    const items = activities.get('data').toArray().map(this.mapActivity, this);
 
     return (
       <List>
-        {lista}
+        {items}
       </List>
     );
   }

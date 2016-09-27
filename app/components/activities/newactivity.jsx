@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import {GridList, GridTile} from 'material-ui/GridList';
 import ZXComponent from 'components/component.jsx';
+import Kind from 'components/activities/kind.jsx';
 
 @connect(({user, kinds}) => ({user, kinds}))
 export default class NewActivity extends ZXComponent {
@@ -13,25 +14,23 @@ export default class NewActivity extends ZXComponent {
     });
   }
 
-  create = (event, item) => {
-    console.log("Create Kind", event, item);
+  create = (kind) => {
+    const {dispatch, user} = this.props;
+
+    dispatch({
+      type: 'ZX_ACTIVITY_CREATE',
+      payload: {
+        userId: user.uid,
+        kind: kind.description,
+        color: kind.color,
+        registeredAt: moment().format(),
+        description: ''
+      }
+    })
   }
 
-  mappingKind = ({id, description, color}) => (
-    <GridTile
-      key={`kind-${id}`}
-      style={{
-        backgroundColor: color,
-      }}
-      kindId={id}
-      onClick={this.create}
-    >
-      {description}
-    </GridTile>
-  )
-
   render() {
-    const kinds = this.props.kinds.map(this.mappingKind);
+    const kinds = this.props.kinds.map(Kind, this);
     const styles = {
       root: {
         display: 'flex',
