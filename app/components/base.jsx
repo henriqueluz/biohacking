@@ -1,11 +1,12 @@
 import React from 'react';
+import {connect} from 'react-redux';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
-import theme from '../theme.js';
 import Hammer from 'react-hammerjs';
+import theme from 'theme.js';
+import Menu from 'components/menu.jsx';
 
-import Menu from './menu.jsx';
-
+@connect(null)
 export default class Base extends React.Component {
 
   static propTypes = {
@@ -19,19 +20,23 @@ export default class Base extends React.Component {
   }
 
   onSwipeRight = () => {
-    if (this.props.location.pathname === '/new') {
-      this.context.router.push('/activities');
-    } else if (this.props.location.pathname === '/activities') {
-      this.context.router.push('/search');
-    }
+    this.props.dispatch({
+      type: 'ZX_NAVIGATION',
+      payload: {
+        direction: 'right',
+        pathname: this.props.location.pathname,
+      }
+    });
   }
 
   onSwipeLeft = () => {
-    if (this.props.location.pathname === '/activities') {
-      this.context.router.push('/new');
-    } else if (this.props.location.pathname === '/search') {
-      this.context.router.push('/activities');
-    }
+    this.props.dispatch({
+      type: 'ZX_NAVIGATION',
+      payload: {
+        direction: 'left',
+        pathname: this.props.location.pathname,
+      }
+    });
   }
 
   render() {

@@ -9,12 +9,12 @@ import firebase from 'firebase';
 import moment from 'moment';
 
 import createSagaMiddleware from 'redux-saga';
-import sagas from 'sagas';
+import sagas from 'api/sagas';
 
-import count from 'reducers/count.js';
-import user from 'reducers/user.js';
-import activities from 'reducers/activities.js';
-import kinds from 'reducers/kinds.js';
+import count from 'api/reducers/count.js';
+import user from 'api/reducers/user.js';
+import activities from 'api/reducers/activities.js';
+import kinds from 'api/reducers/kinds.js';
 
 import Base from 'components/base.jsx';
 import Activities from 'components/activities/list.jsx';
