@@ -7,16 +7,16 @@ function* fetchKinds() {
     const payload = yield call(getAll, 'kinds');
     yield put({
       type: 'ZX_KINDS_LIST_SUCCESS',
-      payload
+      payload,
     });
-  } catch (error) {
-      yield put({
-        type: 'ZX_KINDS_LIST_FAILURE',
-        payload: error
-      });
+  } catch (payload) {
+    yield put({
+      type: 'ZX_KINDS_LIST_FAILURE',
+      payload,
+    });
   }
 }
 
 export default function* watchKinds() {
-  yield* takeLatest("ZX_KINDS_LIST_REQUEST", fetchKinds);
+  yield* takeLatest('ZX_KINDS_LIST_REQUEST', fetchKinds);
 }

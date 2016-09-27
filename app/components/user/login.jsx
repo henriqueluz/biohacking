@@ -1,15 +1,38 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-@connect(({user}) => ({user}))
+@connect(({ user }) => ({ user }))
 export default class Login extends React.Component {
 
   static contextTypes = {
     router: React.PropTypes.object.isRequired,
   }
 
-  catchError = error => {
-    console.log("Error [Dê refresh pra tentar de novo]", error);
+  static propTypes = {
+    user: React.PropTypes.object,
+    dispatch: React.PropTypes.func,
+  }
+
+  componentDidMount() {
+    const auth = new window.firebase.auth();
+    auth.signInWithPopup(this.createProvider())
+        .then(this.authUser)
+        .catch(this.catchError);
+  }
+
+  componentDidUpdate() {
+    return this.redirectToHome();
+  }
+
+  componentWillRender() {
+    return this.redirectToHome();
+  }
+
+  catchError = payload => {
+    this.props.dispatch({
+      type: 'ZX_USER_LOGIN_FAILURE',
+      payload,
+    });
   }
 
   createProvider = () => {
@@ -19,26 +42,11 @@ export default class Login extends React.Component {
   }
 
   redirectToHome = () => {
-    if(this.props.user.isLogged) {
+    if (this.props.user.isLogged) {
       this.context.router.push('/');
       return false;
     }
     return true;
-  }
-
-  componentWillRender() {
-    return this.redirectToHome();
-  }
-
-  componentDidUpdate() {
-    return this.redirectToHome();
-  }
-
-  componentDidMount() {
-    const auth = new window.firebase.auth;
-    auth.signInWithPopup(this.createProvider())
-        .then(this.authUser)
-        .catch(this.catchError);
   }
 
   render() {

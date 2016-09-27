@@ -1,5 +1,5 @@
 import React from 'react';
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import Hammer from 'react-hammerjs';
@@ -13,6 +13,7 @@ export default class Base extends React.Component {
     children: React.PropTypes.element,
     route: React.PropTypes.object,
     location: React.PropTypes.object,
+    dispatch: React.PropTypes.func,
   }
 
   static contextTypes = {
@@ -25,7 +26,7 @@ export default class Base extends React.Component {
       payload: {
         direction: 'right',
         pathname: this.props.location.pathname,
-      }
+      },
     });
   }
 
@@ -35,7 +36,7 @@ export default class Base extends React.Component {
       payload: {
         direction: 'left',
         pathname: this.props.location.pathname,
-      }
+      },
     });
   }
 
@@ -46,6 +47,7 @@ export default class Base extends React.Component {
       <MuiThemeProvider muiTheme={getMuiTheme(theme)}>
         <Hammer onSwipeLeft={this.onSwipeLeft} onSwipeRight={this.onSwipeRight}>
           <div>
+            <Menu />
             {profile}
           </div>
         </Hammer>

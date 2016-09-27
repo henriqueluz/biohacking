@@ -14,7 +14,7 @@ export default class NewActivity extends ZXComponent {
     });
   }
 
-  create = (kind) => {
+  create = (kind, tags) => {
     const {dispatch, user} = this.props;
 
     dispatch({
@@ -24,13 +24,15 @@ export default class NewActivity extends ZXComponent {
         kind: kind.description,
         color: kind.color,
         registeredAt: moment().format(),
-        description: ''
+        description: tags || ''
       }
     })
   }
 
+  mapKind = kind => (<Kind key={`kind-${kind.id}`} kind={kind} onCreate={this.create} />)
+
   render() {
-    const kinds = this.props.kinds.map(Kind, this);
+    const kinds = this.props.kinds.map(this.mapKind);
     const styles = {
       root: {
         display: 'flex',
